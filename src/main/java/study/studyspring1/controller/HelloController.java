@@ -18,9 +18,8 @@ public class HelloController {
 
     // MVC와 템플릿 엔진을 배우면서
     @GetMapping("hello-mvc")
-//    public String helloMvc(@RequestParam(name = "name2", required = true) String name, Model model) { // required 기본값은 true이므로 삭제해도 됨
-    public String helloMvc(@RequestParam("name2") String name, Model model) { // 파라미터에서 'name =' 부분을 삭제하였음, 그래도 실행가능
-        model.addAttribute("name3", name); // key, value
+    public String helloMvc(@RequestParam("name") String name2, Model model) {
+        model.addAttribute("name3", name2); // key, value
         return "hello-template";
     } // 이 코드를 실행하기 위해 주소창에는 http://localhost:8080/hello-mvc?name2=블라블라
 }
