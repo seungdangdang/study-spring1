@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-
 public class HelloController {
 
     // GetMapping = 주소창에 /hello가 들어오면 이 메서드를 호출함
