@@ -11,18 +11,18 @@ import study.studyspring1.repository.MemoryMemberRepository;
 
 class MemberServiceTest {
 
-    MemoryMemberRepository meberRepository;
+    MemoryMemberRepository memberRepository;
     MemberService memberService;
 
     @BeforeEach
     private void beforeEach() {
-        meberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(meberRepository);
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
     }
 
     @AfterEach
     private void afterEach() {
-        meberRepository.clearStore();
+        memberRepository.clearStore();
     }
 
     @Test
