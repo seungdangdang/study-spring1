@@ -6,9 +6,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import study.studyspring1.repository.JdbcMemberRepository;
+import study.studyspring1.repository.JdbcTemplateMemberRepository;
 import study.studyspring1.repository.MemberRepository;
-import study.studyspring1.repository.MemoryMemberRepository;
 
 @Configuration
 public class SpringConfig {
@@ -27,6 +26,6 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
