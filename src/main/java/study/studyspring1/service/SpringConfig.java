@@ -2,21 +2,21 @@
 
 package study.studyspring1.service;
 
-import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import study.studyspring1.repository.JdbcTemplateMemberRepository;
+import study.studyspring1.repository.JpaMemberRepository;
 import study.studyspring1.repository.MemberRepository;
 
 @Configuration
 public class SpringConfig {
 
-    private final DataSource dataSource;
+    @PersistenceContext
+    private final EntityManager em;
 
-    @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
 
     @Bean
@@ -26,6 +26,6 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }
