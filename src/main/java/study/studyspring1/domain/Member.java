@@ -1,8 +1,16 @@
 package study.studyspring1.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Member {
 
-    private Long id; // 시스템이 정하는 id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long id;
     private String name;
 
     public Long getId() {
