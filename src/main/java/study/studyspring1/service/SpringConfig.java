@@ -2,30 +2,23 @@
 
 package study.studyspring1.service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import study.studyspring1.repository.JpaMemberRepository;
 import study.studyspring1.repository.MemberRepository;
 
 @Configuration
 public class SpringConfig {
 
-    @PersistenceContext
-    private final EntityManager em;
+    private final MemberRepository memberRepository;
 
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
-    }
-
-    @Bean
-    public MemberRepository memberRepository() {
-        return new JpaMemberRepository(em);
+        return new MemberService(memberRepository);
     }
 }
